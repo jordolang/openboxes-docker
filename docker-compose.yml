@@ -17,7 +17,6 @@ services:
     build: ./grails-java7
     command: sh /root/openboxes-run.sh
     platform: linux/amd64
-    entrypoint: grails create-app openboxes
     ports:
       - "9080:8080"
     volumes:

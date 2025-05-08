@@ -4,10 +4,9 @@ LABEL maintainer="Michael Seaton mseaton@pih.org"
 
 # Environment variables
 
-ENV SDKMAN_DIR /root/.sdkman
-ENV GRAILS_VERSION 1.3.9
+ENV SDKMAN_DIR=/root/.sdkman
+ENV GRAILS_VERSION=1.3.9
 ENV NODE_VERSION=14.21.3
-
 
 # Install Base Packages required
 RUN apt-get update && apt-get install -y curl zip python2 g++ make gcc build-essential git
@@ -42,11 +41,11 @@ RUN bash -c "source $SDKMAN_DIR/bin/sdkman-init.sh && sdk install grails $GRAILS
 RUN bash -c "source $SDKMAN_DIR/bin/sdkman-init.sh && sdk default grails $GRAILS_VERSION"
 
 # set envs
-ENV JAVA_HOME /usr/lib/jvm/zulu7-ca-amd64
-ENV GRAILS_HOME /root/.sdkman/candidates/grails/current
-ENV PATH $GRAILS_HOME/bin:$PATH
+ENV JAVA_HOME=/usr/lib/jvm/zulu7-ca-amd64
+ENV GRAILS_HOME=/root/.sdkman/candidates/grails/current
+ENV PATH=$GRAILS_HOME/bin:$PATH
 # Memory settings were required or else things would fail with OOM errors or stall forever
-ENV GRAILS_OPTS -XX:MaxPermSize=8192m -Xmx8192M -XX:-UseSplitVerifier -Xverify:none
+ENV GRAILS_OPTS="-XX:MaxPermSize=8192m -Xmx8192M -XX:-UseSplitVerifier -Xverify:none"
 
 # Set the directory that an existing Grails app should be mounted into with a volume
 RUN mkdir /app

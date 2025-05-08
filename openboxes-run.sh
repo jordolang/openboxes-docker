@@ -8,7 +8,6 @@ if [ ! -f /app/web-app/WEB-INF/applicationContext.xml ]; then
    grails upgrade --force --stacktrace
 fi
 
-
 npm cache clean --force
 npm cache verify
 npm i -g npm@6.14.6

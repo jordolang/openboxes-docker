@@ -4,7 +4,7 @@ services:
     image: mysql:5.7.44
     platform: linux/amd64
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: Jl101213
       MYSQL_DATABASE: openboxes
       MYSQL_USER: openboxes
       MYSQL_PASSWORD: openboxes
@@ -17,12 +17,13 @@ services:
     build: ./grails-java7
     command: sh /root/openboxes-run.sh
     platform: linux/amd64
+    entrypoint: grails create-app openboxes
     ports:
-      - "8080:8080"
+      - "9080:8080"
     volumes:
       - ./openboxes-config.properties:/root/.grails/openboxes-config.properties
       - ./openboxes-setenv.sh:/usr/share/tomcat7/bin/setenv.sh
       - ./openboxes-run.sh:/root/openboxes-run.sh
-      - ../openboxes:/app
+      - ./openboxes:/app
     depends_on:
       - db

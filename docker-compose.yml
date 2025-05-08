@@ -15,10 +15,9 @@ services:
 
   grails:
     build: ./grails-java7
-    command: sh /root/openboxes-run.sh
-    platform: linux/amd64
+    command: /bin/bash -c "grails create-app openboxes" && sh /root/openboxes-run.sh
     ports:
-      - "9080:8080"
+      - "8080:8080"
     volumes:
       - ./openboxes-config.properties:/root/.grails/openboxes-config.properties
       - ./openboxes-setenv.sh:/usr/share/tomcat7/bin/setenv.sh
@@ -26,3 +25,4 @@ services:
       - ./openboxes:/app
     depends_on:
       - db
+    
